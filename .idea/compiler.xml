@@ -9,5 +9,8 @@
         <module name="Summer2019OnLineTestNGSeleniumProject" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Summer2019OnLineTestNGSeleniumProject" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
