@@ -6,6 +6,10 @@ package tests.day1;
 public class MyFirstSeleniumScript {
     public static void main(String[] args) {
         //we have to setup webdriver based on the browser that we gonna use
+
+        // old way of configuring webdriver
+        // System.setProperty("webdriver.chrome.driver", "/path/chromedriver");
+
         WebDriverManager.chromedriver().setup();
         //we need to create an object of appropriate classs
         ChromeDriver driver= new ChromeDriver();

@@ -1,15 +1,11 @@
 package utils;
 
 public class BrowsersUtils {
-
-    public static  void wait (int seconds) {
+    public static void wait(int second) {
         try {
-            Thread.sleep(1000 * seconds);
+            Thread.sleep(1000 * second);
         } catch (InterruptedException e) {
             e.printStackTrace();
-
         }
-
     }
-
 }
