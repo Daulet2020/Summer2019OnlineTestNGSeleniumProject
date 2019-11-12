@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import utils.BrowserFactory;
-import utils.BrowsersUtils;
+import utils.BrowserUtils;
 
 public class FindElementsTest {
     public static void main(String[] args) {
@@ -27,7 +27,7 @@ public class FindElementsTest {
             System.out.println("Actual title " + actualTitle);
         }
 
-        BrowsersUtils.wait(2);
+        BrowserUtils.wait(2);
         driver.close();
 
 

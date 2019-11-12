@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import utils.BrowserFactory;
-import utils.BrowsersUtils;
+import utils.BrowserUtils;
 public class ReadAttributesTest {
     public static void main(String[] args) {
         WebDriver driver = BrowserFactory.getDriver("chrome");
@@ -19,7 +19,7 @@ public class ReadAttributesTest {
         //if button has a type "submit" we can use .submit() method instead of click() as well
         WebElement retrievePasswordButton = driver.findElement(By.id("form_submit"));
         //alternative to click only if type = "submit"
-        BrowsersUtils.wait(2);
+        BrowserUtils.wait(2);
         driver.close();
     }
 }

@@ -3,7 +3,7 @@ package tests.day5;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.BrowserFactory;
-import utils.BrowsersUtils;
+import utils.BrowserUtils;
 
 public class TestsForNameLocator {
 
@@ -22,7 +22,7 @@ public class TestsForNameLocator {
         //click sign up
         driver.findElement(By.name("wooden_spoon")).click();
         //pause for 3 seconds
-        BrowsersUtils.wait(3);
+        BrowserUtils.wait(3);
         driver.quit();
     }
 }

@@ -1,6 +1,6 @@
 package utils;
 
-public class BrowsersUtils {
+public class BrowserUtils {
     public static void wait(int second) {
         try {
             Thread.sleep(1000 * second);

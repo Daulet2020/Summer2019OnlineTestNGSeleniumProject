@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import utils.BrowserFactory;
-import utils.BrowsersUtils;
+import utils.BrowserUtils;
 public class AbsoluteXpathTest {
     public static void main(String[] args) {
         WebDriver driver = BrowserFactory.getDriver("chrome");
@@ -12,7 +12,7 @@ public class AbsoluteXpathTest {
         //click on login without entering username and password
         //to invoke warning message
         driver.findElement(By.className("login-btn")).click();
-        BrowsersUtils.wait(2);
+        BrowserUtils.wait(2);
         WebElement warningMessage = driver.findElement(By.xpath("/html/body/table/tbody/tr[2]/td/div/div/div[2]"));
         //for windows , just use control instead of command
         //command + c - copy, command + v - paste, command + x  - cut, command + z - step back (changes), command + z + shift - step forward

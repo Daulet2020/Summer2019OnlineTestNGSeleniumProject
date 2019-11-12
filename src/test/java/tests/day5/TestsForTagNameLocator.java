@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import utils.BrowserFactory;
-import utils.BrowsersUtils;
+import utils.BrowserUtils;
 
 public class TestsForTagNameLocator {
     public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class TestsForTagNameLocator {
         //click sign up
         driver.findElement(By.name("wooden_spoon")).click();
         //pause for 3 seconds
-        BrowsersUtils.wait(3);
+        BrowserUtils.wait(3);
 
         WebElement sub_header = driver.findElement(By.tagName("h3"));
 
