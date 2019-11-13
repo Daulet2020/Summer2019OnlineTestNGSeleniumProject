@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import utils.BrowserFactory;
 
-public class TestsForClassNameLocator {
+public class  TestsForClassNameLocator {
 
     public static void main(String[] args) {
         WebDriver driver = BrowserFactory.getDriver("chrome");
