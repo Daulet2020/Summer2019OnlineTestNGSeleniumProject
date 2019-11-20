@@ -7,6 +7,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.BrowserFactory;
+import utils.BrowserUtils;
+
 public class MultipleButtonsTests {
     private WebDriver driver;
     @BeforeMethod
@@ -20,6 +22,7 @@ public class MultipleButtonsTests {
         driver.findElement(By.xpath("//*[text()='Button 1']")).click();
         String actualResult = driver.findElement(By.cssSelector("#result")).getText();
         Assert.assertEquals(actualResult, expectedResult, "Result is wrong!");
+        BrowserUtils.wait(1);
     }
     @AfterMethod
     public void teardown(){

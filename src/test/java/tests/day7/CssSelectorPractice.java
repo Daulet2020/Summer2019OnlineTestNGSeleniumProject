@@ -5,7 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import utils.BrowserFactory;
 import utils.BrowserUtils;
+
 import java.util.List;
+
 public class CssSelectorPractice {
     //Please use google chrome
     //Which locator to use?
@@ -25,7 +27,7 @@ public class CssSelectorPractice {
         //all buttons
         List<WebElement> buttons = driver.findElements(By.cssSelector(".btn.btn-primary"));
         //loop through list of buttons
-        for (WebElement button: buttons){
+        for (WebElement button : buttons) {
             //and click on every button one by one
             button.click();
             BrowserUtils.wait(1);
