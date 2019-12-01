@@ -4,7 +4,9 @@ package tests.HomeWorks;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import utils.BrowserFactory;
+import utils.BrowserUtils;
 
 public class TestCase1 {
     public static void main(String[] args) {
@@ -22,8 +24,18 @@ public class TestCase1 {
         input2.sendKeys("UserUser123");
         WebElement button = driver.findElement(By.name("_submit"));
         button.click();
-        WebElement button1 = driver.findElement(By.className("dropdown dropdown-level-1"));
-        button1.click();
+        BrowserUtils.wait(3);
+        WebElement activitiesTabLocator = driver.findElement(By.xpath("//span[@class='title title-level-1' and contains(text(), 'Activities')]"));
+        activitiesTabLocator.click();
+        BrowserUtils.wait(3);
+        WebElement calEventsLocator = driver.findElement(By.xpath("//span[@class='title title-level-2' and text()='Calendar Events']"));
+        calEventsLocator.click();
+        BrowserUtils.wait(5);
+        WebElement pageSubtitleLocator = driver.findElement(By.xpath("//div[contains(text(), 'Options')]"));
+        System.out.println(pageSubtitleLocator.getText());
+        Assert.assertTrue(pageSubtitleLocator.isDisplayed());
+        driver.close();
+
 
     }
 
