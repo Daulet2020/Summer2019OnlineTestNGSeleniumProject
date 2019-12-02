@@ -10,19 +10,14 @@ import utils.Driver;
 //In this way before and after methods will be the same
 //Every test class will extend testbase class
 public abstract class TestBase {
-
     @BeforeMethod
-    public void setup(){
+    public void setup() {
         String url = ConfigurationReader.getProperty("url");
         Driver.get().get(url);
     }
 
     @AfterMethod
-    public void teardown(){
+    public void teardown() {
         Driver.close();
     }
 }
-
-
-
-
