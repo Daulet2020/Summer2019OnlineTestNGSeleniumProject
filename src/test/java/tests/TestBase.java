@@ -8,68 +8,58 @@ import org.testng.annotations.*;
 import utils.BrowserUtils;
 import utils.ConfigurationReader;
 import utils.Driver;
-
 import java.io.IOException;
-
 //this class will be a test foundation for all test classes
 //we will put here only before and after parts
-//In this way before and after methods will be the same
-//Every test class will extend testbase class
-public abstract class TestBase {
-// * ExtentReports itself does not build any reports, but allows reporters to access information, which in
-// * turn build the said reports. An example of building an HTML report and adding information to ExtentX:
-// * ExtentHtmlReporter html = new ExtentHtmlReporter("Extent.html");
-// * ExtentXReporter extentx = new ExtentXReporter("localhost");
-
+public abstract class TestBase  {
+    //ExtentReports itself does not build any reports, but allows reporters to access information, which in
+    //urn build the said reports. An example of building an HTML report and adding information to ExtentX:
+    //ExtentHtmlReporter html = new ExtentHtmlReporter("Extent.html");
+    //ExtentXReporter extentx = new ExtentXReporter("localhost");
     protected static ExtentReports extentReports;
-    //    The ExtentHtmlReporter creates a rich standalone HTML file. It allows several
+    // The ExtentHtmlReporter creates a rich standalone HTML file.
+    //It allows several configuration options via the <code>config()</code> method.
     protected static ExtentHtmlReporter extentHtmlReporter;
-    //    Defines a test. You can add logs, snapshots, assign author and categories to a test and its children.
+    //Defines a test. You can add logs, snapshots, assign author and categories to a test and its children.
     protected static ExtentTest extentTest;
-    //        <parameter name="test" value="regression"></parameter>
     @BeforeTest
-    @Parameters("test")
-    public void beforeTest(@Optional String test){
+    @Parameters({"test", "env_url"})
+    public void beforeTest(@Optional String test, @Optional String env_url){
         //location of report
-        //it's gonna be next to target folder, test-output folder
+        //going to ne next to target folder, test-output folder
         String reportName = "report";
         if(test != null){
             reportName = test;
         }
-        String filePath = System.getProperty("user.dir") + "/test-output/"+reportName+".html";
+        String filePath = System.getProperty("user.dir")+"/test-output/"+reportName+".html";
         extentReports = new ExtentReports();
         extentHtmlReporter = new ExtentHtmlReporter(filePath);
         extentReports.attachReporter(extentHtmlReporter);
         extentHtmlReporter.config().setReportName("Vytrack Test Results");
         //system information
+        String env = ConfigurationReader.getProperty("url");
+        if(env_url != null){
+            env = env_url;
+        }
         extentReports.setSystemInfo("Environment", "QA1");
         extentReports.setSystemInfo("Browser", ConfigurationReader.getProperty("browser"));
         extentReports.setSystemInfo("OS", System.getProperty("os.name"));
     }
-
-
     @AfterTest
     public void afterTest(){
-//         Writes test information from the started reporters to their output view
+        //writes test information from the started reporters to their output view
         extentReports.flush();
     }
-
-
-    //        <parameter name="env_url" value="https://qa3.vytrack.com/"></parameter>
     @BeforeMethod
     @Parameters("env_url")
-    public void setup(@Optional String env_url) {
+    public void setup(@Optional String env_url){
         String url = ConfigurationReader.getProperty("url");
-        //if name parameter was set, then use it
-        //if it's null that means it was not set
-        if (env_url != null) {
+        if(env_url != null){
             url = env_url;
         }
         Driver.get().get(url);
     }
-
-
-    //ITestResult class describes the result of a test. (in TestNG)
+    //ITesTResult class describes the result of a test.(in TestNG)
     @AfterMethod
     public void teardown(ITestResult result){
         if(result.getStatus() == ITestResult.FAILURE){
@@ -77,11 +67,8 @@ public abstract class TestBase {
             extentTest.fail(result.getThrowable());
             try {
                 //BrowserUtils.getScreenshot(result.getName()) - takes screenshot and returns location of that screenshot
-                //this method throws IOException (which is checked exception)
-                //any checked exception must be handled
                 extentTest.addScreenCaptureFromPath(BrowserUtils.getScreenshot(result.getName()));
             } catch (IOException e) {
-                //print error info
                 e.printStackTrace();
             }
         }else if(result.getStatus() == ITestResult.SKIP){
@@ -89,6 +76,4 @@ public abstract class TestBase {
         }
         Driver.close();
     }
-
-
 }
