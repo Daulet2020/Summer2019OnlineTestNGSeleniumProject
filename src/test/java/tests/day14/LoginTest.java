@@ -2,7 +2,7 @@ package tests.day14;
 
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
-import tests.VyTrack.TestBase;
+import tests.TestBase;
 import utils.BrowserUtils;
 import utils.ConfigurationReader;
 import utils.Driver;
