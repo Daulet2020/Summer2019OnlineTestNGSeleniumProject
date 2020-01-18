@@ -1,4 +1,4 @@
-package tests.vytrack;
+package tests.vytrack.Notes;
 
 public class Notes {
     /*
